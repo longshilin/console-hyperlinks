@@ -29,7 +29,7 @@ namespace Needle
 
 			
 			// if the path is not an url but some external file path open if with default app
-			if (File.Exists(path))
+			if (File.Exists(path) || Directory.Exists(path))
 			{
 				var absolute = Path.GetFullPath(path);
 				var isExternalPath = !absolute.StartsWith(Application.dataPath);
