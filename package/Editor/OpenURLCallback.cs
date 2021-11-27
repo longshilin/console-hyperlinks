@@ -47,7 +47,11 @@ namespace Needle
 		private static void OpenWithDefaultProgram(string path)
 		{
 			var proc = new Process();
+#if UNITY_EDITOR_WIN
 			proc.StartInfo.FileName = "explorer";
+#else
+			proc.StartInfo.FileName = "open";
+#endif
 			proc.StartInfo.Arguments = "\"" + path + "\"";
 			proc.Start();
 		}
